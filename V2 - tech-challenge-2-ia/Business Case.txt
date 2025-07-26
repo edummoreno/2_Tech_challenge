@@ -1,0 +1,40 @@
+Esse algoritmo genético tem como objetivo otimizar a geração da escala de setores de um supermercado observando as seguintes 
+restrições:
+
+1 - O funcionário não pode ser escalado para trabalhar nos dias que ele solicitou folga/necessidade de ausência previamente.
+
+A legislação brasileira proíbe:
+2 - O funcionário de trabalhar 3 domingos seguidos.
+3 - O funcionário de trabalhar 7 dias úteis seguidos.
+4 - O intervalo entre os expedientes do funcionário ser menor que 11 horas, ou seja, se em um dia o funcionário trabalhou de 
+	noite ele não pode ser escalado para trabalhar de manhã no dia seguinte. 
+
+Sobre a solução desenvolvida:
+
+O que esta sendo otimizado?
+R: A geração da escala de funcionários em cada setor de um supermercado respeitando as restrições mencionadas acima.
+
+Qual a representação da solução (genoma)?
+R: A escala final de funcionários do setor selecionado.
+
+Qual a função de fitness?
+R: Para cada dia o algoritmo verifica: 
+1 - Se para cada período escalou corretamente o número MÍNIMO de funcionários.
+2 - Soma-se esses sub-totais de cada dia e se obtêm o total daquele mês, esse será o score final
+
+Qual é o método de seleção?
+R: O método de seleção será o Elitismo e para sortear os pares que irão cruzar será criada uma lista permuta onde o primeiro 
+da lista irá cruzar com o segundo, o terceiro com quarto e assim por diante.
+
+Qual método de crossover vai ser implementado?
+R: Trocar a(s) linha(s) da solução A pela mesma linha(s) da solução B, ao final o filho 1 terá 75-85% +/- do pai 1 (solução A) 
+e o restante do pai 2 e o filho 2 terá 75-85% +/- do pai 2 (solução B) e o restante do pai 1.
+
+Qual será o método de inicialização?
+R: O método de inicialização será hotstart (inicialização heurística).
+
+Qual o critério de parada?
+R: O programa irá finalizar quando atingir a marca de 1000 gerações.
+
+Qual o tipo de codificação:
+R: Devido a natureza do problema que esta sendo resolvido foi escolhido a codificação híbrida.
