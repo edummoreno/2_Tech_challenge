@@ -10,7 +10,8 @@ A legislação brasileira proíbe:
 	noite ele não pode ser escalado para trabalhar de manhã no dia seguinte. 
 
 O algoritmo foi desenvolvido para gerar escalas de trabalho observando as restrições mencionadas acima. Essas restrições 
-podem impossibilitar o preenchimento ideal dos dois turnos em todos os dias do mês vigente.
+podem impossibilitar o preenchimento ideal dos dois turnos em todos os dias do mês vigente (fazendo com que o algoritmo
+não atinja o score de 100%).
 Por exemplo: se a escala mínima for de 4 funcionários para um determinado dia e 2 deles não puderem trabalhar devido a 
 folga obrigatória e férias então aquele dia não terá o número mínimo de funcionários necessários.
 Em resumo, o algoritmo busca a melhor solução possível porém sem violar as restrições.
