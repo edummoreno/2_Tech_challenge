@@ -1,77 +1,170 @@
-# Projeto: Otimizador de Escalas de Trabalho com Algoritmos Geneticos
+# Tech Challenge – Escalonamento Otimizado com Algoritmo Genético
 
-Este projeto utiliza um Algoritmo Genético (GA) para otimizar a geração da escala de trabalho de setores de um supermercado, respeitando restrições legais e operacionais.
+> **Fase 2 – Pós‑Tech IA para Devs**
+> Projeto de otimização de escalas de supermercado usando Algoritmos Genéticos (AGs).
 
-## 🚀 Objetivo
+---
 
-Gerar automaticamente escalas mensais para setores do supermercado que:
+## 1 🔍 Visão Geral
 
-* Respeitem as folgas previamente solicitadas por funcionários;
-* Evitem violações da CLT (como trabalhar 3 domingos seguidos, 7 dias úteis seguidos ou menos de 11h de intervalo entre turnos);
-* Garantam que a escala cumpra a quantidade mínima de pessoas por turno (manhã/noite).
+O objetivo é gerar automaticamente a escala mensal de um setor do supermercado garantindo:
 
-## 🧰 Lógica do Algoritmo Genético
+* cumprimento de legislação trabalhista (CLT);
+* respeito a folgas previamente solicitadas;
+* atendimento da demanda mínima de funcionários por turno;
+* otimização global do quadro (fitness).
 
-* **Representação (Genoma):** Cada indivíduo representa uma escala mensal completa de um setor.
-* **Inicialização:** Heurística (hotstart) com regras básicas aplicadas.
-* **Fitness:** Avalia cada escala verificando se atende à demanda de cada dia/turno. Penaliza escalas que desrespeitam restrições.
-* **Seleção:** Elitismo (melhor indivíduo sempre preservado).
-* **Crossover:** Troca de linhas (funcionários) entre dois pais.
-* **Mutação:** Altera aleatoriamente a escala de alguns funcionários.
-* **Critério de parada:** 1000 gerações ou estagnação.
+O núcleo da solução é um Algoritmo Genético implementado em Python 3.11.
 
-## 📁 Estrutura
+---
+
+## 2 📁 Estrutura de Pastas
 
 ```
-.
-├── Dataset/
+tech-challenge/
+├── data/                      # Arquivos de entrada (Excel)
 │   ├── Mes_Anterior.xlsx
 │   ├── Mes_Vigente.xlsx
 │   ├── Mes_Vigente_Days_Off.xlsx
 │   └── Escala_Setor_Periodo.xlsx
-├── Notebook/
-│   ├── support_functions.py
-│   ├── ga_functions.py
-│   └── setor_selecionado.py
-├── Business Case.txt
-└── README.md
+│
+├── src/                       # Código‑fonte principal
+│   ├── support_functions.py   # Funções de ETL e regras de negócio
+│   ├── ga_functions.py        # Núcleo do Algoritmo Genético (fitness, crossover, mutação)
+│   └── setor_selecionado.py   # Script de execução (main)
+│
+├── notebooks/                 # (opcional) prototipagem/explorações
+│   └── prototyping.ipynb
+│
+├── outputs/                   # Resultados gerados
+│   ├── best_schedule.xlsx     # Melhor escala encontrada
+│   └── logs/                  # Logs de execução
+│
+├── requirements.txt           # Dependências Python
+├── README.md                  # Você está aqui ;‑)
+└── Tech Challenge.pdf         # Arquivo final de entrega (links do vídeo e Git)
 ```
 
-## 🔧 Como executar
+> **Obs.:** Essa estrutura é apenas sugestão; sinta‑se livre para renomear diretórios desde que mantenha clareza.
+> O único nome obrigatório segundo o edital é **Tech Challenge.pdf**.
 
-### 1. Instalar dependências:
+---
+
+## 3 ⚙️ Pré‑requisitos
 
 ```bash
-pip install pandas numpy openpyxl
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+pip install -r requirements.txt  # pandas numpy openpyxl
 ```
 
-### 2. Executar o script principal:
+---
+
+## 4 🚀 Como Rodar
 
 ```bash
-python Notebook/setor_selecionado.py
+python src/setor_selecionado.py
 ```
 
-### 3. Saída esperada
+O script:
 
-* Fitness (score) da melhor solução por geração
-* Tempo total de execução
-* Escala final gerada (impressa no console ou exportável para Excel)
+1. Carrega os dados em `data/`.
+2. Gera uma população inicial **hot‑start** com restrições básicas.
+3. Executa até 1000 gerações (ou convergência) aplicando elitismo, crossover e mutação.
+4. Salva a melhor escala em `outputs/best_schedule.xlsx` e imprime métricas no console.
 
-## 🧵 Dados de entrada
+Parâmetros importantes estão declarados no topo de `setor_selecionado.py` (tamanho da população, taxa de mutação, etc.).
 
-* **Mes\_Anterior.xlsx:** escala usada para calcular restrições de domingos e dias consecutivos
-* **Mes\_Vigente.xlsx:** base de preenchimento da nova escala
-* **Mes\_Vigente\_Days\_Off.xlsx:** dias de folga solicitados
-* **Escala\_Setor\_Periodo.xlsx:** número mínimo de funcionários por turno por dia
+---
 
-## 🌟 Possíveis melhorias
+## 4B 📓 Executando passo a passo no Google Colab
 
-* Exportar a escala final para Excel
-* Suporte a múltiplos setores simultaneamente
-* Interface gráfica
-* Validação com dados reais
+1. **Crie um novo notebook** em [https://colab.research.google.com](https://colab.research.google.com).
+2. **Carregue os dados e o código**:
 
-## 📄 Licença
+   * Menu ▸ *Files* ▸ *Upload* ▸ envie toda a pasta `data/` e os três arquivos `.py` de `src/`.
+   * Ou, se o repositório estiver no GitHub, use:
 
-Este projeto é apenas para fins educacionais no contexto do Tech Challenge da pós-graduação em IA para Devs.
+     ```python
+     !git clone https://github.com/<seu‑usuario>/tech-challenge.git
+     %cd tech-challenge
+     ```
+3. **Instale dependências** dentro da primeira célula:
+
+   ```python
+   !pip install pandas numpy openpyxl
+   ```
+4. **Importe as funções**. Exemplo de célula:
+
+   ```python
+   from src.setor_selecionado import main  # se você embrulhar o loop em função main()
+   main()
+   ```
+
+   > Se preferir rodar tal qual o script, use:
+   >
+   > ```python
+   > !python src/setor_selecionado.py
+   > ```
+5. **Acompanhe a saída** direto no console do Colab; ao final você verá o fitness por geração.
+6. **Baixe o resultado**: se o script salvar `outputs/best_schedule.xlsx`, use:
+
+   ```python
+   from google.colab import files
+   files.download('outputs/best_schedule.xlsx')
+   ```
+
+> **Dica:** para não ter que fazer upload manual a cada vez, coloque seus arquivos em um repositório Git público ou privado e apenas `git clone` dentro do Colab.
+
+---
+
+## 5 🧬 Descrição do Algoritmo Genético
+
+| Etapa             | Implementação                                                      | Arquivo                                |
+| ----------------- | ------------------------------------------------------------------ | -------------------------------------- |
+| **Genoma**        | Escala mensal (DataFrame)                                          | *support\_functions* / *ga\_functions* |
+| **Inicialização** | Heurística (hotstart)                                              | `support_functions.gerar_escala_final` |
+| **Fitness**       | Pontua o atendimento diário por turno, com peso maior aos domingos | `ga_functions.gerar_fitness`           |
+| **Seleção**       | Elitismo + pares randômicos para crossover                         | `setor_selecionado.py`                 |
+| **Crossover**     | Troca de linhas (funcionários) entre dois pais                     | `ga_functions.crossover`               |
+| **Mutação**       | Alteração de linhas aleatórias com taxa adaptativa                 | `ga_functions.gerar_mutacao`           |
+| **Parada**        | 1000 gerações ou estagnação                                        | `setor_selecionado.py`                 |
+
+---
+
+## 6 🔎 Como funciona cada módulo
+
+* **support\_functions.py** – ETL + regras de domínio (dias trabalhados seguidos, domingos, folgas, etc.).
+* **ga\_functions.py** – calcula fitness, ordena população, realiza crossover e mutação.
+* **setor\_selecionado.py** – ponto de entrada; orquestra o GA, ajusta a diversidade e produz saída.
+
+---
+
+## 7 📊 Resultados & Benchmark
+
+*Relate aqui comparações com métodos convencionais ou versões anteriores se desejar.*
+
+---
+
+## 8 📹 Vídeo & Entrega
+
+* Grave um vídeo (máx. 10 min) demonstrando:
+
+  * o script rodando,
+  * a leitura dos dados,
+  * a evolução do fitness,
+  * a exportação da escala final.
+* Suba no YouTube e coloque o link em **Tech Challenge.pdf**, junto do link do GitHub.
+
+---
+
+## 9 🚧 Próximos Passos
+
+* Roda multiprocessamento para acelerar fitness.
+* Permitir vários setores simultâneos.
+* UI (Streamlit).
+
+---
+
+© 2025 – Pós‑Tech IA para Devs  – Projeto acadêmico
 
