@@ -31,7 +31,7 @@ tech-challenge/
 ├── src/                       # Código‑fonte principal
 │   ├── support_functions.py   # Funções de ETL e regras de negócio
 │   ├── ga_functions.py        # Núcleo do Algoritmo Genético (fitness, crossover, mutação)
-│   └── main.py   # Script de execução (main)
+│   └── main.py                # Script de execução (main)
 │
 ├── notebooks/                 # (opcional) prototipagem/explorações
 │   └── prototyping.ipynb
