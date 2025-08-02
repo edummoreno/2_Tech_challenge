@@ -31,7 +31,7 @@ tech-challenge/
 ├── src/                       # Código‑fonte principal
 │   ├── support_functions.py   # Funções de ETL e regras de negócio
 │   ├── ga_functions.py        # Núcleo do Algoritmo Genético (fitness, crossover, mutação)
-│   └── setor_selecionado.py   # Script de execução (main)
+│   └── main.py   # Script de execução (main)
 │
 ├── notebooks/                 # (opcional) prototipagem/explorações
 │   └── prototyping.ipynb
@@ -68,11 +68,11 @@ pip install -r requirements.txt  # pandas numpy openpyxl
 |-------|-------------------------|-------------------------------------------------------------------------------------------------------------------|
 | 1️⃣    | `support_functions.py` | Define funções utilitárias (ETL, verificação de CLT, geração de escala inicial). **Não é executado diretamente** – apenas importado. |
 | 2️⃣    | `ga_functions.py`      | Implementa todo o núcleo do AG: `gerar_fitness`, `crossover`, `gerar_mutacao` etc. Também é apenas importado.      |
-| 3️⃣    | `setor_selecionado.py` | **Script principal**: carrega dados, invoca funções dos dois módulos acima, executa o loop evolutivo e grava/mostra a melhor escala. |
+| 3️⃣    | `main.py` | **Script principal**: carrega dados, invoca funções dos dois módulos acima, executa o loop evolutivo e grava/mostra a melhor escala. |
 
 #### 👉 Como rodar localmente e no Colab
 ```bash
-python src/setor_selecionado.py
+python src/main.py
 
 O script:
 
@@ -81,7 +81,7 @@ O script:
 3. Executa até 1000 gerações (ou convergência) aplicando elitismo, crossover e mutação.
 4. Salva a melhor escala em `outputs/best_schedule.xlsx` e imprime métricas no console.
 
-Parâmetros importantes estão declarados no topo de `setor_selecionado.py` (tamanho da população, taxa de mutação, etc.).
+Parâmetros importantes estão declarados no topo de `main.py` (tamanho da população, taxa de mutação, etc.).
 
 ---
 
@@ -94,7 +94,7 @@ Parâmetros importantes estão declarados no topo de `setor_selecionado.py` (tam
    * Ou, se o repositório estiver no GitHub, use:
 
      ```python
-     !git clone https://github.com/<seu‑usuario>/tech-challenge.git
+     !git clone https://github.com/edummoreno/2_Tech_challenge
      %cd tech-challenge
      ```
 3. **Instale dependências** dentro da primeira célula:
@@ -105,14 +105,14 @@ Parâmetros importantes estão declarados no topo de `setor_selecionado.py` (tam
 4. **Importe as funções**. Exemplo de célula:
 
    ```python
-   from src.setor_selecionado import main  # se você embrulhar o loop em função main()
+   from src.main import main  # se você embrulhar o loop em função main()
    main()
    ```
 
    > Se preferir rodar tal qual o script, use:
    >
    > ```python
-   > !python src/setor_selecionado.py
+   > !python src/main.py
    > ```
 5. **Acompanhe a saída** direto no console do Colab; ao final você verá o fitness por geração.
 6. **Baixe o resultado**: se o script salvar `outputs/best_schedule.xlsx`, use:
@@ -133,10 +133,10 @@ Parâmetros importantes estão declarados no topo de `setor_selecionado.py` (tam
 | **Genoma**        | Escala mensal (DataFrame)                                          | *support\_functions* / *ga\_functions* |
 | **Inicialização** | Heurística (hotstart)                                              | `support_functions.gerar_escala_final` |
 | **Fitness**       | Pontua o atendimento diário por turno, com peso maior aos domingos | `ga_functions.gerar_fitness`           |
-| **Seleção**       | Elitismo + pares randômicos para crossover                         | `setor_selecionado.py`                 |
+| **Seleção**       | Elitismo + pares randômicos para crossover                         | `main.py`                 |
 | **Crossover**     | Troca de linhas (funcionários) entre dois pais                     | `ga_functions.crossover`               |
 | **Mutação**       | Alteração de linhas aleatórias com taxa adaptativa                 | `ga_functions.gerar_mutacao`           |
-| **Parada**        | 1000 gerações ou estagnação                                        | `setor_selecionado.py`                 |
+| **Parada**        | 1000 gerações ou estagnação                                        | `main.py`                 |
 
 ---
 
