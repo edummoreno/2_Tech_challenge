@@ -70,7 +70,7 @@ pip install -r requirements.txt  # pandas numpy openpyxl
 | 2️⃣    | `ga_functions.py`      | Implementa todo o núcleo do AG: `gerar_fitness`, `crossover`, `gerar_mutacao` etc. Também é apenas importado.      |
 | 3️⃣    | `setor_selecionado.py` | **Script principal**: carrega dados, invoca funções dos dois módulos acima, executa o loop evolutivo e grava/mostra a melhor escala. |
 
-#### 👉 Como rodar localmente
+#### 👉 Como rodar localmente e no Colab
 ```bash
 python src/setor_selecionado.py
 
@@ -150,19 +150,14 @@ Parâmetros importantes estão declarados no topo de `setor_selecionado.py` (tam
 
 ## 7 📊 Resultados & Benchmark
 
-*Relate aqui comparações com métodos convencionais ou versões anteriores se desejar.*
 
 ---
 
-## 8 📹 Vídeo & Entrega
 
-* Grave um vídeo (máx. 10 min) demonstrando:
+## 📹 Vídeo Explicativo
 
-  * o script rodando,
-  * a leitura dos dados,
-  * a evolução do fitness,
-  * a exportação da escala final.
-* Suba no YouTube e coloque o link em **Tech Challenge.pdf**, junto do link do GitHub.
+[🔗 Assista ao Vídeo da Apresentação no YouTube]()
+
 
 ---
 
@@ -175,4 +170,20 @@ Parâmetros importantes estão declarados no topo de `setor_selecionado.py` (tam
 ---
 
 © 2025 – Pós‑Tech IA para Devs  – Projeto acadêmico
+
+## 📬 Contato do grupo
+
+
+**Marco Antonio**
+- [🔗 LinkedIn](https://www.linkedin.com/in/marco-antonio-augusto-58b73794)
+
+**Eduardo Moreno Neto**
+- [🔗 LinkedIn](https://www.linkedin.com/in/eduardo-moreno-neto/)
+
+**Robert Harada**
+- [🔗 LinkedIn](https://www.linkedin.com/in/)
+
+**Alexandre Santana**
+- [🔗 LinkedIn](https://www.linkedin.com/in/franciscoeduardo-granado)
+
 

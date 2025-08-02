@@ -157,7 +157,15 @@ fim = time.time()
 # Armazena quanto tempo levou para esse bloco de código ser executado
 tempo_execucao = round((fim - inicio) / 60)
 
-#armazena tempo de execução
+
+# Imprime o tempo de execução
+print(f'\nTempo de Execução: {tempo_execucao}')
+
+# Gera o score final da solução encontrada
+resultado = avaliar_resultado_final(melhor_solucao, df_escala_setor_periodo, nom_setor, domingo_dias_mes_vigente)
+
+
+#armazena resultados finais e logs
 with open(OUTPUT_DIR / "run_log.txt", "a") as log:
     log.write(
         f"Geração final: {num_geracao} | "
@@ -166,11 +174,6 @@ with open(OUTPUT_DIR / "run_log.txt", "a") as log:
         f"Tempo (min): {tempo_execucao}\n"
     )
 
-# Imprime o tempo de execução
-print(f'\nTempo de Execução: {tempo_execucao}')
-
-# Gera o score final da solução encontrada
-resultado = avaliar_resultado_final(melhor_solucao, df_escala_setor_periodo, nom_setor, domingo_dias_mes_vigente)
 
 # Imprime o score da solução final
 print(resultado)
