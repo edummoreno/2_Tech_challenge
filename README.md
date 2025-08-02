@@ -148,12 +148,13 @@ Parâmetros importantes estão declarados no topo de `setor_selecionado.py` (tam
 
 ---
 
-## 7 📊 Resultados & Benchmark
+## 7 📊 Resultados & Benchmark
 
 ### 📈 Melhor solução encontrada
 
 <details>
 <summary>Clique para ver a escala</summary>
+
 ```text
        Funcionário       Setor  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
 0   Jorge de Jesus  Hortifruti  N  N  N  F  N  N  N  N  F  M  M  M  M  F  M  M  M  M  M  F  N  F  N  N  N  N  N  N  N  F  F
@@ -161,7 +162,7 @@ Parâmetros importantes estão declarados no topo de `setor_selecionado.py` (tam
 2     José Fonseca  Hortifruti  M  M  M  M  M  M  F  M  M  F  N  N  F  N  N  F  M  M  M  M  M  M  M  F  N  N  N  N  N  N  N
 3  Willian Machado  Hortifruti  N  N  N  N  F  M  M  M  M  M  M  M  M  F  F  N  N  N  N  F  N  N  F  M  M  M  M  M  M  M  F
 4  Marcelo Ribeiro  Hortifruti  F  N  F  N  N  F  N  N  N  N  F  M  N  N  N  N  N  N  F  M  M  M  M  N  N  N  F  F  N  N  N
-</details>
+
 
 ## 📹 Vídeo Explicativo
 
