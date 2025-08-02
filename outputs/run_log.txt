@@ -1,0 +1,1 @@
+Geração final: 1000 | Melhor fitness: 346.0 | Score final: 93.55% | Tempo (min): 15
