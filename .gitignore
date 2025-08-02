@@ -1,0 +1,19 @@
+# --- arquivos grandes ou sensíveis ---
+data/*
+outputs/*
+!data/*.xlsx          # se quiser forçar algum .xlsx, remova esta linha
+!outputs/*.md         # exemplo de exceção
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Ambiente virtual
+.venv/
+venv/
+
+# Arquivos temporários / SO
+*.pyc
+__pycache__/
+.DS_Store
+*.swp
+

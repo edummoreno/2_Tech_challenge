@@ -7,21 +7,28 @@ import time
 from support_functions import obter_dias_trabalhados_mes_passado, obter_days_off, gerar_escala_days_off, gerar_escala_final, avaliar_resultado_final
 from ga_functions import gerar_fitness, ordenar_populacao, crossover, gerar_mutacao
 import warnings
+from pathlib import Path
+
+# pasta src/ ➡️  parent  ➡️  raiz do projeto (tech-challenge/)
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"        #  tech-challenge/data
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "outputs"
+OUTPUT_DIR.mkdir(exist_ok=True)
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # Cria um dataframe com a escala dos funcionários do mês passado
-df_mes_anterior = pd.read_excel('Dataset/Mes_Anterior.xlsx')
+df_mes_anterior = pd.read_excel(DATA_DIR / "Mes_Anterior.xlsx")
 
 # Cria um dataframe sem escala definida dos funcionários do mês vigente
-df_mes_vigente = pd.read_excel('Dataset/Mes_Vigente.xlsx')
+df_mes_vigente = pd.read_excel(DATA_DIR / "Mes_Vigente.xlsx")
 
 # Cria um dataframe com a escala de days_off solicitadas previamente pelos funcionários para o mês vigente
-df_days_off = pd.read_excel('Dataset/Mes_Vigente_Days_Off.xlsx')
+df_days_off = pd.read_excel(DATA_DIR / "Mes_Vigente_Days_Off.xlsx")
 
 # Cria um dataframe com a escala dos funcionários por setor e periodo para o mês vigente
 # É importante ressaltar que essa escala informa o número MÍNIMO de funcionários por periodo para aquele setor e não o número máximo
-df_escala_setor_periodo = pd.read_excel('Dataset/Escala_Setor_Periodo.xlsx')
+df_escala_setor_periodo = pd.read_excel(DATA_DIR / "Escala_Setor_Periodo.xlsx")
 
 # Lista com os domingos do mês anterior
 domingo_dias_mes_anterior = [22, 29]
@@ -139,11 +146,25 @@ while num_geracao < 1000:
 # Imprime a melhor solução encontrada
 print(f'Melhor solução encontrada:\n{melhor_solucao}')
 
+#Exportar a melhor escala como Excel
+best_path = OUTPUT_DIR / "best_schedule.xlsx"
+melhor_solucao.to_excel(best_path, index=False)
+print(f"Escala salva em: {best_path}")
+
 # Inicializa a variável que vai armazenar o horário que esse bloco de código terminou de ser executado
 fim = time.time()
 
 # Armazena quanto tempo levou para esse bloco de código ser executado
 tempo_execucao = round((fim - inicio) / 60)
+
+#armazena tempo de execução
+with open(OUTPUT_DIR / "run_log.txt", "a") as log:
+    log.write(
+        f"Geração final: {num_geracao} | "
+        f"Melhor fitness: {melhor_fitness} | "
+        f"Score final: {resultado}% | "
+        f"Tempo (min): {tempo_execucao}\n"
+    )
 
 # Imprime o tempo de execução
 print(f'\nTempo de Execução: {tempo_execucao}')
