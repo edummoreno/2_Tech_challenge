@@ -154,6 +154,7 @@ Parâmetros importantes estão declarados no topo de `setor_selecionado.py` (tam
 
 <details>
 <summary>Clique para ver a escala</summary>
+
 ```text
       Funcionário       Setor  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
 0   Jorge de Jesus  Hortifruti  N  N  N  F  N  N  N  N  F  M  M  M  M  F  M  M  M  M  M  F  N  F  N  N  N  N  N  N  N  F  F
