@@ -3,6 +3,8 @@ data/*
 outputs/*
 !data/*.xlsx          # se quiser forçar algum .xlsx, remova esta linha
 !outputs/*.md         # exemplo de exceção
+!outputs/*.txt        # execeção
+
 
 # Jupyter checkpoints
 .ipynb_checkpoints/
