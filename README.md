@@ -64,11 +64,11 @@ pip install -r requirements.txt  # pandas numpy openpyxl
 
 ### 📂 Ordem de Execução dos Arquivos `src/`
 
-| Ordem | Arquivo                 | Função principal                                                                                                  |
-|-------|-------------------------|-------------------------------------------------------------------------------------------------------------------|
-| 1️⃣    | `support_functions.py` | Define funções utilitárias (ETL, verificação de CLT, geração de escala inicial). **Não é executado diretamente** – apenas importado. |
-| 2️⃣    | `ga_functions.py`      | Implementa todo o núcleo do AG: `gerar_fitness`, `crossover`, `gerar_mutacao` etc. Também é apenas importado.      |
-| 3️⃣    | `main.py` | **Script principal**: carrega dados, invoca funções dos dois módulos acima, executa o loop evolutivo e grava/mostra a melhor escala. |
+| Ordem | Arquivo                 | Função principal                                                                                                                     |
+|-------|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| 1️⃣    | `support_functions.py`  | Define funções utilitárias (ETL, verificação de CLT, geração de escala inicial). **Não é executado diretamente** – apenas importado. |
+| 2️⃣    | `ga_functions.py`       | Implementa todo o núcleo do AG: `gerar_fitness`, `crossover`, `gerar_mutacao` etc. Também é apenas importado.                        |
+| 3️⃣    | `main.py`               | **Script principal**: carrega dados, invoca funções dos dois módulos acima, executa o loop evolutivo e grava/mostra a melhor escala. |
 
 #### 👉 Como rodar localmente e no Colab
 ```bash
