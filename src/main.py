@@ -9,11 +9,13 @@ from ga_functions import gerar_fitness, ordenar_populacao, crossover, gerar_muta
 import warnings
 from pathlib import Path
 
-# pasta src/ ➡️  parent  ➡️  raiz do projeto (tech-challenge/)
-BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = BASE_DIR / "data"        #  tech-challenge/data
-OUTPUT_DIR = Path(__file__).resolve().parent.parent / "outputs"
+#para executar com caminho dinamico.
+BASE_DIR   = Path(__file__).resolve().parent.parent   
+DATA_DIR   = BASE_DIR / "dataset"                       
+OUTPUT_DIR = BASE_DIR / "outputs"
+ESCALAS_DIR = OUTPUT_DIR / "Escalas_Geradas"
 OUTPUT_DIR.mkdir(exist_ok=True)
+ESCALAS_DIR.mkdir(exist_ok=True)
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
@@ -146,17 +148,11 @@ while num_geracao < 1000:
 # Imprime a melhor solução encontrada
 print(f'Melhor solução encontrada:\n{melhor_solucao}')
 
-#Exportar a melhor escala como Excel
-best_path = OUTPUT_DIR / "best_schedule.xlsx"
-melhor_solucao.to_excel(best_path, index=False)
-print(f"Escala salva em: {best_path}")
-
 # Inicializa a variável que vai armazenar o horário que esse bloco de código terminou de ser executado
 fim = time.time()
 
 # Armazena quanto tempo levou para esse bloco de código ser executado
 tempo_execucao = round((fim - inicio) / 60)
-
 
 # Imprime o tempo de execução
 print(f'\nTempo de Execução: {tempo_execucao}')
@@ -164,16 +160,13 @@ print(f'\nTempo de Execução: {tempo_execucao}')
 # Gera o score final da solução encontrada
 resultado = avaliar_resultado_final(melhor_solucao, df_escala_setor_periodo, nom_setor, domingo_dias_mes_vigente)
 
-
-#armazena resultados finais e logs
-with open(OUTPUT_DIR / "run_log.txt", "a") as log:
-    log.write(
-        f"Geração final: {num_geracao} | "
-        f"Melhor fitness: {melhor_fitness} | "
-        f"Score final: {resultado}% | "
-        f"Tempo (min): {tempo_execucao}\n"
-    )
-
-
 # Imprime o score da solução final
-print(resultado)
+print(f'\nResultado final: {resultado}')
+
+# Gera o caminho e o nome do arquivo excel onde será exportada a solução final
+nome_excel = f'Escalas_Geradas/Escala_Final_Setor_{nom_setor}.xlsx'
+
+# Cria o arquivo excel com a melhor solução encontrada
+best_path = ESCALAS_DIR / f"Escala_Final_Setor_{nom_setor}.xlsx"
+melhor_solucao.to_excel(best_path, index=False)
+print(f"Escala salva em: {best_path}")
