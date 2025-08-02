@@ -163,6 +163,8 @@ Parâmetros importantes estão declarados no topo de `setor_selecionado.py` (tam
 3  Willian Machado  Hortifruti  N  N  N  N  F  M  M  M  M  M  M  M  M  F  F  N  N  N  N  F  N  N  F  M  M  M  M  M  M  M  F
 4  Marcelo Ribeiro  Hortifruti  F  N  F  N  N  F  N  N  N  N  F  M  N  N  N  N  N  N  F  M  M  M  M  N  N  N  F  F  N  N  N
 
+<details>
+
 
 ## 📹 Vídeo Explicativo
 
