@@ -79,7 +79,12 @@ tech-challenge/
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+
+#Linux
+source venv/bin/activate  
+#Windows:
+.venv\Scripts\activate
+
 pip install -r requirements.txt  # pandas numpy openpyxl
 ```
 
@@ -92,25 +97,38 @@ pip install -r requirements.txt  # pandas numpy openpyxl
 
 | Ordem | Arquivo                | Função principal                                                                                                                     |
 | ----- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| 1️⃣   | `support_functions.py` | Define funções utilitárias (ETL, verificação de CLT, geração de escala inicial). **Não é executado diretamente** – apenas importado. |
-| 2️⃣   | `ga_functions.py`      | Implementa todo o núcleo do AG: `gerar_fitness`, `crossover`, `gerar_mutacao` etc. Também é apenas importado.                        |
-| 3️⃣   | `main.py`              | **Script principal**: carrega dados, invoca funções dos dois módulos acima, executa o loop evolutivo e grava/mostra a melhor escala. |
+| 1️⃣    | `support_functions.py` | Define funções utilitárias (ETL, verificação de CLT, geração de escala inicial). **Não é executado diretamente** – apenas importado. |
+| 2️⃣    | `ga_functions.py`      | Implementa todo o núcleo do AG: `gerar_fitness`, `crossover`, `gerar_mutacao` etc. Também é apenas importado.                        |
+| 3️⃣    | `main.py`              | **Script principal**: carrega dados, invoca funções dos dois módulos acima, executa o loop evolutivo e grava/mostra a melhor escala. |
+
 
 #### 👉 Como rodar localmente
 
-```bash
-python src/main.py
-```
+> **Importante:** execute o script como **módulo** para que os *imports relativos* funcionem.
+>
+> ```bash
+> # dentro da pasta-raiz do projeto
+> python -m src.main
+> ```
+>
+> Alternativa (recomendada em ambientes de produção):
+>
+> ```bash
+> # instale o pacote em modo editável
+> pip install -e .              # requer setup.py/pyproject.toml
+> # depois
+> python -m src.main            # ou
+> tech-challenge                # se houver entry‑point definido
+> ```
+>
+> Executar `python src/main.py` **falha** porque quebras a noção de pacote e os imports relativos (`from .support_functions`) deixam de funcionar.
 
-O script executa:
+O script faz:
 
-1. Carrega os dados em `data/`.
-2. Gera uma população inicial **hot‑start** com restrições básicas.
-3. Corre até 1000 gerações (ou convergência) aplicando elitismo, crossover e mutação.
-4. Salva a melhor escala em `outputs/best_schedule.xlsx` e imprime métricas no console.
-
-Parâmetros importantes (tamanho da população, taxa de mutação etc.) ficam no topo de `src/main.py`.
-
+1. Carrega os dados em `dataset/`.
+2. Gera população inicial **hot‑start**.
+3. Executa até 1000 gerações aplicando elitismo, crossover e mutação.
+4. Salva `outputs/best_schedule.xlsx`.
 ---
 
 ## 4B 📓 Executando passo a passo no Google Colab  
