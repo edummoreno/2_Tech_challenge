@@ -39,10 +39,11 @@ domingo_dias_mes_anterior = [22, 29]
 domingo_dias_mes_vigente = [6, 13, 20, 27]
 
 # Nome do setor selecionado
-#nom_setor = 'Hortifruti'
+nom_setor = 'Hortifruti'
 
-for nom_setor in df_escala_setor_periodo['Setor'].unique():
-    print(f'\n====== Rodando setor: {nom_setor} ======\n')
+#comente a linha acima e descomente aqui para rodar todos os setores.
+"""for nom_setor in df_escala_setor_periodo['Setor'].unique():
+    print(f'\n====== Rodando setor: {nom_setor} ======\n')"""
 
 # Cria um dataframe que é a cópia do dataframe do mês vigente
 df_escala_days_off = df_mes_vigente.copy()
