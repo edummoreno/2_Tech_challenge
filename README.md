@@ -133,6 +133,8 @@ O script faz:
 
 ## 4B 📓 Executando passo a passo no Google Colab  
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/edummoreno/2_Tech_challenge/blob/main/notebooks/Run_on_Colab.ipynb)
+
 1. **Clique no badge acima** para abrir o notebook pronto no Colab. Ele clona o repositório, instala dependências e roda o algoritmo automaticamente.
 
 ### Passo‑a‑passo manual
