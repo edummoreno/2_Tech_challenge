@@ -4,8 +4,8 @@ import numpy as np
 import random as rd
 import copy
 import time
-from support_functions import obter_dias_trabalhados_mes_passado, obter_days_off, gerar_escala_days_off, gerar_escala_final, avaliar_resultado_final
-from ga_functions import gerar_fitness, ordenar_populacao, crossover, gerar_mutacao
+from .support_functions import obter_dias_trabalhados_mes_passado, obter_days_off, gerar_escala_days_off, gerar_escala_final, avaliar_resultado_final
+from .ga_functions import gerar_fitness, ordenar_populacao, crossover, gerar_mutacao
 import warnings
 from pathlib import Path
 

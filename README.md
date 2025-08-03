@@ -73,9 +73,6 @@ tech-challenge/
     └── support_functions.py
 ```
 
-> **Obs.:** Essa estrutura é apenas sugestão; sinta‑se livre para renomear diretórios desde que mantenha clareza.
-> O único nome obrigatório segundo o edital é **Tech Challenge.pdf**.
-
 ---
 
 ## 3 ⚙️ Pré‑requisitos
