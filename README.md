@@ -9,12 +9,38 @@
 
 O objetivo é gerar automaticamente a escala mensal de um setor do supermercado garantindo:
 
-* cumprimento de legislação trabalhista (CLT);
-* respeito a folgas previamente solicitadas;
-* atendimento da demanda mínima de funcionários por turno;
-* otimização global do quadro (fitness).
+## Restrições consideradas
 
-O núcleo da solução é um Algoritmo Genético implementado em Python 3.11.
+Este algoritmo genético tem como objetivo otimizar a geração da **escala de setores de um supermercado** observando as seguintes restrições:
+
+1. **Folgas solicitadas** – o funcionário não pode ser escalado para trabalhar nos dias em que pediu folga/ausência previamente.
+
+A legislação brasileira proíbe:
+
+2. O funcionário de **trabalhar 3 domingos seguidos**.  
+3. O funcionário de **trabalhar 7 dias úteis seguidos**.  
+4. O **intervalo entre dois expedientes** de um funcionário ser **menor que 11 horas**; isto é, se ele trabalhou à noite, não pode ser escalado para o turno da manhã do dia seguinte.
+
+O algoritmo foi desenvolvido para gerar escalas de trabalho observando essas restrições. Elas podem, entretanto, **impossibilitar o preenchimento ideal** dos turnos em todos os dias do mês (o algoritmo pode não alcançar 100 % de score).
+
+> **Exemplo:** se a escala mínima exigir 4 funcionários num dia e 2 deles estiverem em folga obrigatória ou férias, aquele dia ficará abaixo do mínimo.
+
+Em resumo, o algoritmo **busca a melhor solução possível sem violar as restrições** acima.
+
+---
+
+## Sobre a solução desenvolvida
+
+| Questão |        Resposta             |
+|---------|-----------------------------|
+| **O que está sendo otimizado?**       | A geração da escala de funcionários em cada setor do supermercado, respeitando as restrições acima. |
+| **Representação da solução (genoma)** | A própria escala final de funcionários do setor selecionado (DataFrame). |
+| **Função de fitness**                 | Para cada dia, verifica-se: (1) se cada período tem o **número mínimo** de funcionários; (2) somam-se os acertos diários obtendo-se o score mensal. |
+| **Método de seleção**                 | **Elitismo**; em seguida, cria-se uma lista permutada e cruzam-se pares adjacentes (1º×2º, 3º×4º …). |
+| **Método de crossover**               | Troca de linha(s) da solução A com a(s) mesma(s) linha(s) da solução B. O **Filho 1** herda ≈ 75–85 % do Pai 1 e o restante do Pai 2; o **Filho 2**, o inverso. |
+| **Método de inicialização**           | **Hot-start** (inicialização heurística baseada em regras de negócio). |
+| **Critério de parada**                | O algoritmo encerra após **1000 gerações**. |
+| **Tipo de codificação**               | **Híbrida**, adequada à natureza combinatória do problema. |
 
 ---
 
