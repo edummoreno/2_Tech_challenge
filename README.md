@@ -106,8 +106,8 @@ pip install -r requirements.txt  # pandas numpy openpyxl
 
 > **Importante:** execute o script como **módulo** para que os *imports relativos* funcionem.
 >
+># dentro da pasta-raiz do projeto
 > ```bash
-> # dentro da pasta-raiz do projeto
 > python -m src.main
 > ```
 >
