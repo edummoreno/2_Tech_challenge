@@ -187,7 +187,7 @@ O script faz:
 
 * **support\_functions.py** – ETL + regras de domínio (dias trabalhados seguidos, domingos, folgas, etc.).
 * **ga\_functions.py** – calcula fitness, ordena população, realiza crossover e mutação.
-* **setor\_selecionado.py** – ponto de entrada; orquestra o GA, ajusta a diversidade e produz saída.
+* **main.py** – ponto de entrada; orquestra o GA, ajusta a diversidade e produz saída.
 
 ---
 
