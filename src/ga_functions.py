@@ -3,7 +3,12 @@ import pandas as pd
 import numpy as np
 import random as rd
 import copy
-from support_functions import obter_dias_trabalhados_mes_passado, obter_days_off, gerar_escala_days_off, gerar_escala_final
+from .support_functions import (
+    obter_dias_trabalhados_mes_passado,
+    obter_days_off,
+    gerar_escala_days_off,
+    gerar_escala_final,
+)
 import warnings
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
