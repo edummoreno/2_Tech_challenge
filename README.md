@@ -48,27 +48,29 @@ Em resumo, o algoritmo **busca a melhor solução possível sem violar as restri
 
 ```
 tech-challenge/
-├── data/                      # Arquivos de entrada (Excel)
-│   ├── Mes_Anterior.xlsx
-│   ├── Mes_Vigente.xlsx
-│   ├── Mes_Vigente_Days_Off.xlsx
-│   └── Escala_Setor_Periodo.xlsx
-│
-├── src/                       # Código‑fonte principal
-│   ├── support_functions.py   # Funções de ETL e regras de negócio
-│   ├── ga_functions.py        # Núcleo do Algoritmo Genético (fitness, crossover, mutação)
-│   └── main.py                # Script de execução (main)
-│
-├── notebooks/                 # (opcional) prototipagem/explorações
-│   └── prototyping.ipynb
-│
-├── outputs/                   # Resultados gerados
-│   ├── best_schedule.xlsx     # Melhor escala encontrada
-│   └── logs/                  # Logs de execução
-│
-├── requirements.txt           # Dependências Python
-├── README.md                  # Você está aqui ;‑)
-└── Tech Challenge.pdf         # Arquivo final de entrega (links do vídeo e Git)
+├── dataset
+│   ├── Escala_Setor_Periodo.xlsx
+│   ├── Mes_Anterior.xlsx
+│   ├── Mes_Vigente_Days_Off.xlsx
+│   └── Mes_Vigente.xlsx
+├── notebooks
+│   └── run_on_colab.py
+├── outputs
+│   ├── best_schedule.xlsx
+│   ├── Escalas_Geradas
+│   │   └── Escala_Final_Setor_Hortifruti.xlsx
+│   └── run_log.txt
+├── README.md
+├── requirements.txt
+└── src
+    ├── ga_functions.py
+    ├── __init__.py
+    ├── main.py
+    ├── __pycache__
+    │   ├── ga_functions.cpython-311.pyc
+    │   └── support_functions.cpython-311.pyc
+    ├── setup.py
+    └── support_functions.py
 ```
 
 > **Obs.:** Essa estrutura é apenas sugestão; sinta‑se livre para renomear diretórios desde que mantenha clareza.
