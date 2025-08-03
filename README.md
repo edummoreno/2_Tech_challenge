@@ -86,69 +86,67 @@ pip install -r requirements.txt  # pandas numpy openpyxl
 
 ---
 
+
 ## 4 🚀 Como Rodar
 
 ### 📂 Ordem de Execução dos Arquivos `src/`
 
-| Ordem | Arquivo                 | Função principal                                                                                                                     |
-|-------|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| 1️⃣    | `support_functions.py`  | Define funções utilitárias (ETL, verificação de CLT, geração de escala inicial). **Não é executado diretamente** – apenas importado. |
-| 2️⃣    | `ga_functions.py`       | Implementa todo o núcleo do AG: `gerar_fitness`, `crossover`, `gerar_mutacao` etc. Também é apenas importado.                        |
-| 3️⃣    | `main.py`               | **Script principal**: carrega dados, invoca funções dos dois módulos acima, executa o loop evolutivo e grava/mostra a melhor escala. |
+| Ordem | Arquivo                | Função principal                                                                                                                     |
+| ----- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| 1️⃣   | `support_functions.py` | Define funções utilitárias (ETL, verificação de CLT, geração de escala inicial). **Não é executado diretamente** – apenas importado. |
+| 2️⃣   | `ga_functions.py`      | Implementa todo o núcleo do AG: `gerar_fitness`, `crossover`, `gerar_mutacao` etc. Também é apenas importado.                        |
+| 3️⃣   | `main.py`              | **Script principal**: carrega dados, invoca funções dos dois módulos acima, executa o loop evolutivo e grava/mostra a melhor escala. |
 
-#### 👉 Como rodar localmente e no Colab
+#### 👉 Como rodar localmente
+
 ```bash
 python src/main.py
+```
 
-O script:
+O script executa:
 
 1. Carrega os dados em `data/`.
 2. Gera uma população inicial **hot‑start** com restrições básicas.
-3. Executa até 1000 gerações (ou convergência) aplicando elitismo, crossover e mutação.
+3. Corre até 1000 gerações (ou convergência) aplicando elitismo, crossover e mutação.
 4. Salva a melhor escala em `outputs/best_schedule.xlsx` e imprime métricas no console.
 
-Parâmetros importantes estão declarados no topo de `main.py` (tamanho da população, taxa de mutação, etc.).
+Parâmetros importantes (tamanho da população, taxa de mutação etc.) ficam no topo de `src/main.py`.
 
 ---
 
-## 4B 📓 Executando passo a passo no Google Colab
+## 4B 📓 Executando passo a passo no Google Colab  
+
+1. **Clique no badge acima** para abrir o notebook pronto no Colab. Ele clona o repositório, instala dependências e roda o algoritmo automaticamente.
+
+### Passo‑a‑passo manual
 
 1. **Crie um novo notebook** em [https://colab.research.google.com](https://colab.research.google.com).
-2. **Carregue os dados e o código**:
 
-   * Menu ▸ *Files* ▸ *Upload* ▸ envie toda a pasta `data/` e os três arquivos `.py` de `src/`.
-   * Ou, se o repositório estiver no GitHub, use:
-
-     ```python
-     !git clone https://github.com/edummoreno/2_Tech_challenge
-     %cd tech-challenge
-     ```
-3. **Instale dependências** dentro da primeira célula:
+2. **Clone o repositório** e entre na pasta:
 
    ```python
-   !pip install pandas numpy openpyxl
+   !git clone https://github.com/edummoreno/2_Tech_challenge
+   %cd 2_Tech_challenge
    ```
-4. **Importe as funções**. Exemplo de célula:
+
+3. **Instale as dependências**:
 
    ```python
-   from src.main import main  # se você embrulhar o loop em função main()
-   main()
+   !pip install -r requirements.txt
    ```
 
-   > Se preferir rodar tal qual o script, use:
-   >
-   > ```python
-   > !python src/main.py
-   > ```
-5. **Acompanhe a saída** direto no console do Colab; ao final você verá o fitness por geração.
-6. **Baixe o resultado**: se o script salvar `outputs/best_schedule.xlsx`, use:
+4. **Execute o script principal**:
+
+   ```python
+   !python src/main.py
+   ```
+
+5. **Baixe o resultado** (opcional):
 
    ```python
    from google.colab import files
    files.download('outputs/best_schedule.xlsx')
    ```
-
-> **Dica:** para não ter que fazer upload manual a cada vez, coloque seus arquivos em um repositório Git público ou privado e apenas `git clone` dentro do Colab.
 
 ---
 
