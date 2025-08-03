@@ -157,7 +157,7 @@ O script faz:
 4. **Execute o script principal**:
 
    ```python
-   !python src/main.py
+   !python -m src.main
    ```
 
 5. **Baixe o resultado** (opcional):
