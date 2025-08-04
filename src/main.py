@@ -41,10 +41,6 @@ domingo_dias_mes_vigente = [6, 13, 20, 27]
 # Nome do setor selecionado
 nom_setor = 'Hortifruti'
 
-#comente a linha acima e descomente aqui para rodar todos os setores.
-"""for nom_setor in df_escala_setor_periodo['Setor'].unique():
-    print(f'\n====== Rodando setor: {nom_setor} ======\n')"""
-
 # Cria um dataframe que é a cópia do dataframe do mês vigente
 df_escala_days_off = df_mes_vigente.copy()
 
@@ -173,4 +169,5 @@ nome_excel = f'Escalas_Geradas/Escala_Final_Setor_{nom_setor}.xlsx'
 # Cria o arquivo excel com a melhor solução encontrada
 best_path = ESCALAS_DIR / f"Escala_Final_Setor_{nom_setor}.xlsx"
 melhor_solucao.to_excel(best_path, index=False)
+
 print(f"Escala salva em: {best_path}")
