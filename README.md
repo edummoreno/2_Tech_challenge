@@ -7,7 +7,7 @@
 
 ## 1 🔍 Visão Geral
 
-O objetivo é gerar automaticamente a escala mensal de um setor do supermercado garantindo:
+O objetivo é otimizar a geração da escala mensal de setores de um supermercado garantindo:
 
 ## Restrições consideradas
 
