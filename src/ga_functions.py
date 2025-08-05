@@ -160,7 +160,7 @@ def crossover(populacao_gerada):
     # Retorna a nova geração
     return nova_geracao
 
-# Função que realiza o cruzamento entre os individuos com maior score
+# Função que realiza a mutação dos indivíduos
 def gerar_mutacao(nova_geracao, probabilidade_mutacao):
     
     # Cria uma cópia completa da nova geração gerada pelo crossover
@@ -223,3 +223,4 @@ def gerar_mutacao(nova_geracao, probabilidade_mutacao):
 
     # Retorna a geração com os indiviuos que podem ou não ter sofrido a mutação
     return mutacao
+
